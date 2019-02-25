@@ -10,7 +10,7 @@
         android:id="@+id/ele_title"
         layout="@layout/common_above_title" />
 
- 	 <com.mos.view.RefreshableListView
+ 	 <com.android.byc.mealordering.view.RefreshableListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +20,6 @@
         android:fadingEdgeLength="0.0sp"
         android:layout_below="@id/ele_title"
         android:scrollbars="none" >
-    </com.mos.view.RefreshableListView>
+    </com.android.byc.mealordering.view.RefreshableListView>
 
 </LinearLayout>

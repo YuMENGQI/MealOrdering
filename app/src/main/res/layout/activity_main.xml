@@ -24,8 +24,9 @@
 
         <RadioButton
             android:id="@+id/rb_homePage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/guide_ele"
             android:gravity="center_horizontal"
@@ -35,7 +36,8 @@
         
         <RadioButton
             android:id="@+id/rb_order"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:button="@null"
             android:drawableTop="@drawable/guide_order"
@@ -46,8 +48,9 @@
 
         <RadioButton
             android:id="@+id/rb_found"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/guide_found"
             android:gravity="center_horizontal"
@@ -59,8 +62,9 @@
 
         <RadioButton
             android:id="@+id/rb_my"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/guide_my"
             android:gravity="center_horizontal"

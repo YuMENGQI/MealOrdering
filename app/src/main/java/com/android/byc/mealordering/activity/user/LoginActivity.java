@@ -87,7 +87,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         //自动登录的CheckBox
         autoLoginCheckBox = (CheckBox)findViewById(R.id.cb_autoLogin);
         //获取保存在SharePreferences里面的账号信息，实现自动登录
-        sp = getSharedPreferences("accountInfo", Context.MODE_WORLD_READABLE);
+        sp = getSharedPreferences("accountInfo", Context.MODE_PRIVATE);
 
         if(sp.getBoolean("ISCHECK", false)){
 
@@ -282,7 +282,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 Constant.LoginMsg.isLogin = true;
                 pd.dismiss();
                 LoginActivity.this.finish();
-                Toast.makeText(getApplicationContext(), "登录成功!", 1000).show();
+                Toast.makeText(getApplicationContext(), "登录成功!", Toast.LENGTH_SHORT).show();
 
             }
         }

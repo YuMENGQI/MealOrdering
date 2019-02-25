@@ -28,7 +28,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="centerInside"
-        android:text="沈阳建筑大学商业街"
+        android:text="南昌大学科学技术与学院商业街"
         android:gravity="center"
         android:textColor="#666666" />
 

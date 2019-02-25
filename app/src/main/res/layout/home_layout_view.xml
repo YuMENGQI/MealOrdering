@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
             
-               <com.mos.view.ab.AbSlidingPlayView
+               <com.android.byc.mealordering.view.ab.AbSlidingPlayView
                 android:id="@+id/viewPager_menu"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
@@ -19,14 +19,14 @@
                  android:layout_marginBottom="5dp"
               />
             
-            <com.mos.view.MyGridView
+            <com.android.byc.mealordering.view.MyGridView
                 android:id="@+id/my_gridview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:horizontalSpacing="10dp"
                 android:numColumns="4"
                 android:verticalSpacing="10dp" >
-            </com.mos.view.MyGridView>
+            </com.android.byc.mealordering.view.MyGridView>
             
 	</LinearLayout>
 		

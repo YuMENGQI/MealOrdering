@@ -2,6 +2,7 @@ package com.android.byc.mealordering.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.byc.mealordering.R;
+import com.android.byc.mealordering.activity.order.EditActivity;
+import com.android.byc.mealordering.activity.order.MyCollectionActivity;
+import com.android.byc.mealordering.activity.order.SoftSetting;
+import com.android.byc.mealordering.activity.order.ToastActivity;
 import com.android.byc.mealordering.activity.user.LoginActivity;
 import com.android.byc.mealordering.common.Constant;
 import com.android.byc.mealordering.listener.IBtnCallListener;
@@ -33,6 +38,10 @@ public class MyFragment extends Fragment implements IBtnCallListener {
 
     private TextView tv_1;//
     private TextView tv_2;
+    private TextView myCollection;
+    private TextView editMsg;
+    private TextView toast;
+    private TextView softSetting;
 
     //@Nullable
     @Override
@@ -45,6 +54,14 @@ public class MyFragment extends Fragment implements IBtnCallListener {
     public void initView(View view){
         tv_1 = (TextView)view.findViewById(R.id.text_01);
         tv_2 = (TextView)view.findViewById(R.id.text_02);
+        myCollection = view.findViewById(R.id.my_collection);
+        editMsg = view.findViewById(R.id.edit_msg);
+        toast = view.findViewById(R.id.toast);
+        softSetting = view.findViewById(R.id.soft_setting);
+        myCollection.setOnClickListener(new InfooClass());
+        editMsg.setOnClickListener(new InfooClass());
+        toast.setOnClickListener(new InfooClass());
+        softSetting.setOnClickListener(new InfooClass());
         myFragmentTransfermsg();
 
         contactLayout = (RelativeLayout)view.findViewById(R.id.mime_layout_02);
@@ -57,7 +74,6 @@ public class MyFragment extends Fragment implements IBtnCallListener {
         settingLayout.setOnClickListener(new SoftWareSettingClass());
 
     }
-
 
 
     class EditInfoClass implements View.OnClickListener {
@@ -77,11 +93,7 @@ public class MyFragment extends Fragment implements IBtnCallListener {
 
         @Override
         public void onClick(View v) {
-            // TODO Auto-generated method stub
-//				Intent intent = new Intent(getActivity(),SettingActivity.class);
-//				startActivity(intent);
 
-            //getActivity().finish();
         }
 
     }
@@ -115,4 +127,33 @@ public class MyFragment extends Fragment implements IBtnCallListener {
         }
         System.out.println("由Activity传输过来的信息:"+account);
     }
+
+   class InfooClass implements View.OnClickListener {
+       @Override
+       public void onClick(View view) {
+           switch (view.getId()){
+               case R.id.my_collection:
+                   Intent intent = new Intent(getActivity(), MyCollectionActivity.class);
+                   intent.putExtra("account", account);
+                   startActivity(intent);
+                   break;
+               case R.id.toast:
+                   Intent intent1 = new Intent(getActivity(), ToastActivity.class);
+                   intent1.putExtra("account", account);
+                   startActivity(intent1);
+                   break;
+               case R.id.edit_msg:
+                   Intent intent2 = new Intent(getActivity(), EditActivity.class);
+                   intent2.putExtra("account", account);
+                   startActivity(intent2);
+                   break;
+               case R.id.soft_setting:
+                   Intent intent3 = new Intent(getActivity(), SoftSetting.class);
+                   intent3.putExtra("account", account);
+                   startActivity(intent3);
+                   break;
+
+           }
+       }
+   }
 }

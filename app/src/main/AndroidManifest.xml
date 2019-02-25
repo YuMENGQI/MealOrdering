@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".activity.user.LoginActivity" />
         <activity android:name=".activity.user.RegisterActivity" />
-        <activity android:name=".activity.business.RestaurantDetailActivity"></activity>
+        <activity android:name=".activity.business.RestaurantDetailActivity"/>
+        <activity android:name=".activity.order.MyCollectionActivity" />
+        <activity android:name=".activity.order.EditActivity" />
+        <activity android:name=".activity.order.ToastActivity" />
+        <activity android:name=".activity.order.SoftSetting" />
     </application>
 
 </manifest>
