@@ -8,11 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-/**
- *
- * ��ƣ�AbViewPagerAdapter.java
- * ������һ��ͨ�õ�ViewPager������
- */
+
 @SuppressLint("UseSparseArrays")
 @SuppressWarnings("unused")
 public class AbViewPagerAdapter extends PagerAdapter {
@@ -56,27 +52,12 @@ public class AbViewPagerAdapter extends PagerAdapter {
         return mListViews.size();
     }
 
-    /**
-     * ������Object�Ƿ��Ӧ���View.
-     *
-     * @param arg0 the arg0
-     * @param arg1 the arg1
-     * @return true, if is view from object
-     * @see android.support.v4.view.PagerAdapter#isViewFromObject(android.view.View, java.lang.Object)
-     */
     @Override
     public boolean isViewFromObject(View arg0, Object arg1) {
         return arg0 == (arg1);
     }
 
-    /**
-     * ��������ʾView.
-     *
-     * @param container the container
-     * @param position  the position
-     * @return the object
-     * @see android.support.v4.view.PagerAdapter#instantiateItem(android.view.View, int)
-     */
+
     @Override
     public Object instantiateItem(View container, int position) {
         View v = mListViews.get(position);
@@ -84,26 +65,13 @@ public class AbViewPagerAdapter extends PagerAdapter {
         return v;
     }
 
-    /**
-     * �������Ƴ�View.
-     *
-     * @param container the container
-     * @param position  the position
-     * @param object    the object
-     * @see android.support.v4.view.PagerAdapter#destroyItem(android.view.View, int, java.lang.Object)
-     */
+
     @Override
     public void destroyItem(View container, int position, Object object) {
         ((ViewPager) container).removeView((View) object);
     }
 
-    /**
-     * ����������Ҫ��������notifyDataSetChanged.
-     *
-     * @param object the object
-     * @return the item position
-     * @see android.support.v4.view.PagerAdapter#getItemPosition(java.lang.Object)
-     */
+
     @Override
     public int getItemPosition(Object object) {
         return POSITION_NONE;

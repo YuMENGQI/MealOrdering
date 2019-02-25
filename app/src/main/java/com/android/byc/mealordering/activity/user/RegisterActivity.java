@@ -133,7 +133,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
                 RegisterActivity.this.finish();
-                Toast.makeText(getApplicationContext(), "注册成功!", 1000).show();
+                Toast.makeText(getApplicationContext(), "注册成功!", Toast.LENGTH_SHORT).show();
             }
         }
 

@@ -60,10 +60,10 @@ public class MainActivity extends FragmentActivity implements IBtnCallListener {
          * 初始化组件
          */
         private void initView() {
-            mHomePage = (RadioButton) findViewById(R.id.rb_homePage);
-            mOrder = (RadioButton)findViewById(R.id.rb_order);
-            mFound = (RadioButton) findViewById(R.id.rb_found);
-            mMy = (RadioButton) findViewById(R.id.rb_my);
+            mHomePage =  findViewById(R.id.rb_homePage);
+            mOrder = findViewById(R.id.rb_order);
+            mFound =  findViewById(R.id.rb_found);
+            mMy =  findViewById(R.id.rb_my);
 
         }
         /**

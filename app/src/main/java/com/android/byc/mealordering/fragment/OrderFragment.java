@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.byc.mealordering.R;
+import com.android.byc.mealordering.activity.order.OrderList;
+
 import com.android.byc.mealordering.adapter.OrderAdapter;
 import com.android.byc.mealordering.common.Constant;
 import com.android.byc.mealordering.listener.IBtnCallListener;
@@ -39,25 +41,27 @@ public class OrderFragment extends Fragment implements IBtnCallListener {
     private Bundle bundle;
 
     private String account;
-
-    private List<HashMap<String,Object>> orderList;
+    private TextView messeageTitle;
+    private List<HashMap<String, Object>> orderList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_order,container,false);
+        view = inflater.inflate(R.layout.fragment_order, container, false);
         initView(view);
         return view;
     }
 
-    public void initView(View view){
+    public void initView(View view) {
         orderFragmentTransfermsg();
 
-        listView = (ListView)view.findViewById(R.id.order_listview);
-        new GetOrderAsyncTask().execute(Constant.URL_GetOrder,account);
+        listView = (ListView) view.findViewById(R.id.order_listview);
+        messeageTitle = view.findViewById(R.id.message_title);
+        messeageTitle.setOnClickListener(new OrderListClass());
+        new GetOrderAsyncTask().execute(Constant.URL_GetOrder, account);
     }
 
-    public List<HashMap<String,Object>> getOrderList(String url,String account){
-        List<HashMap<String,Object>> list = new ArrayList<HashMap<String,Object>>();
+    public List<HashMap<String, Object>> getOrderList(String url, String account) {
+        List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 
         //同步加载的类
         SyncHttp syncHttp = new SyncHttp();
@@ -69,14 +73,14 @@ public class OrderFragment extends Fragment implements IBtnCallListener {
             JSONObject jsonObject = new JSONObject(retStr);
 
             int ret = jsonObject.getInt("ret");
-            if(ret == 0){
+            if (ret == 0) {
                 JSONObject dataObject = jsonObject.getJSONObject("data");
                 int totalNum = dataObject.getInt("totalNum");
-                if(totalNum > 0){
+                if (totalNum > 0) {
                     JSONArray orderlist = dataObject.getJSONArray("orderList");
-                    for(int i = 0;i<orderlist.length();i++){
-                        JSONObject orderMap = (JSONObject)orderlist.opt(i);
-                        HashMap<String, Object> map = new HashMap<String,Object>();
+                    for (int i = 0; i < orderlist.length(); i++) {
+                        JSONObject orderMap = (JSONObject) orderlist.opt(i);
+                        HashMap<String, Object> map = new HashMap<String, Object>();
                         map.put("picPath", orderMap.getString("picPath"));
                         map.put("name", orderMap.getString("name"));
                         map.put("amount", orderMap.getInt("amount"));
@@ -86,7 +90,7 @@ public class OrderFragment extends Fragment implements IBtnCallListener {
                         list.add(map);
                     }
                 }
-            }else{
+            } else {
 
             }
         } catch (Exception e) {
@@ -96,22 +100,22 @@ public class OrderFragment extends Fragment implements IBtnCallListener {
     }
 
     @SuppressWarnings("rawtypes")
-    class GetOrderAsyncTask extends AsyncTask<String, List, List<HashMap<String,Object>>> {
+    class GetOrderAsyncTask extends AsyncTask<String, List, List<HashMap<String, Object>>> {
 
         @Override
-        protected List<HashMap<String,Object>> doInBackground(String... params) {
+        protected List<HashMap<String, Object>> doInBackground(String... params) {
 
-            List<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();
-            try{
+            List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+            try {
                 list = getOrderList(params[0], params[1]);
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return list;
         }
 
         @Override
-        protected void onPostExecute(List<HashMap<String,Object>> orderList) {
+        protected void onPostExecute(List<HashMap<String, Object>> orderList) {
             OrderAdapter adapter = new OrderAdapter(getActivity(), orderList);
             listView.setAdapter(adapter);
         }
@@ -128,7 +132,7 @@ public class OrderFragment extends Fragment implements IBtnCallListener {
         // TODO Auto-generated method stub
         bundle = getArguments();
         account = bundle.getString("account");
-        System.out.println("Activity传输过来的信息:"+account);
+        System.out.println("Activity传输过来的信息:" + account);
     }
 
     @Override
@@ -142,4 +146,15 @@ public class OrderFragment extends Fragment implements IBtnCallListener {
     }
 
 
+    private class OrderListClass implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.message_title:
+                    Intent intent = new Intent(getActivity(), OrderList.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    }
 }
